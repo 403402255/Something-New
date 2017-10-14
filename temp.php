@@ -9,7 +9,7 @@ include("header.php");
   <div class="container">
      <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
         <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-        <li>User</li>
+        <li>Edit Profile</li>
     </ol>
 </div>
 </div>
@@ -39,7 +39,7 @@ include("header.php");
                         <li><a href="follow.php"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Following List</span></a></li>
                         <li><a href="giftshop.php"><i class="fa fa-gift" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gift Shop</span></a></li>
                         <li><a href="game.php"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Daliy Game</span></a></li>
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">User</span></a></li>
+                        <li><a href="eduser"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">User</span></a></li>
                         <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                     </ul>
                 </div>
@@ -73,6 +73,7 @@ include("header.php");
                                                         sh@mail.com
                                                     </p>
                                                     <div class="divider">
+                                                    	<span>gift point: 40pt</span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -87,41 +88,64 @@ include("header.php");
                     <h1>Hello, SH</h1>
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
-<!--換的內容-->
-                            <div class="sales">
-                                <h2>Your Saves</h2>
+<!--換的內容--><div class="col-md-9 personal-info">
 
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> 2017
-                                    </button>
-                                    <div class="dropdown-menu">
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-7 col-sm-7 col-xs-12 gutter">
+        <form action="" name="form1" method="Post" class="form-horizontal" role="form">
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Account Name: </label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="fname" value="" placeholder="<?php echo $member_name;?>">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Password:</label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="lname" value="userlName">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Enter your password again: </label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="email" value="usermail@gmail.com">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Name: </label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="phone" value="userAddress">
+            </div>
+          </div>
 
-                            <div class="sales report">
-                                <h2>news</h2>
-                                <div class="btn-group">
-                                    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <span>Period:</span> 2017
-                                    </button>
-                                    <div class="dropdown-menu">
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Address: </label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="userid" value="userId">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Phone: </label>
+            <div class="col-lg-8">
+              <input class="form-control" type="text" name="userpsw" value="userPsw">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-lg-8">
+              <input type="button" class="btn btn-primary" value="Save Changes" onclick="form1.action='ed.php';form1.submit();"/>
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
 
-                                        <a href="#">2014</a>
-                                        <a href="#">2015</a>
-                                        <a href="#">2016</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <!--//換的內容-->
             </div>
         </div>

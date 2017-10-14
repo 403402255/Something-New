@@ -2,16 +2,16 @@
 include("header.php");
 include("function.php");
 ?>
-<!-- breadcrumbs -->
-	<div class="breadcrumbs">
-		<div class="container">
-			<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-				<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-				<li>3Cs</li>
-			</ol>
-		</div>
+<!--breadcrumbs-->
+<div class="breadcrumbs">
+	<div class="container">
+		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+			<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+			<li>Wears</li>
+		</ol>
 	</div>
-<!-- //breadcrumbs -->
+</div>
+<!--//breadcrumbs-->
 <!--productsnav-->
 <div class="products">
 	<div class="container">
@@ -19,11 +19,10 @@ include("function.php");
 			<div class="categories">
 				<h2>Categories</h2>
 				<ul class="cate">
-					
-					<li><a href="#.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>BRANDS</a></li>
+					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>BRANDS</a></li>
 					<ul>
 						<?php
-						getbrands();//之後改依類別顯示
+						getcbrands();//之後改依類別顯示
 						?>
 					</ul>
 				</ul>
@@ -50,31 +49,21 @@ include("function.php");
 					<div class="clearfix"> </div>
 				</div>
 			</div>
-		<!--//加filter function-->
-<!--//productsnav-->
+
+<!--//productsnav->
 <!--products-->
 	<?php
-	$servername = "rds-mysql.cwougcernbij.ap-northeast-1.rds.amazonaws.com";
-	$username = "User";
-	$password = "12345678";
-	$dbname = "project";
-	$datatable = "laptop";//改table:(L+T)
+	$datatable = "laptop";
 	$results_per_page = 18;
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	mysqli_query($conn, 'SET CHARACTER SET utf8');
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
 
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 	$start_from = ($page-1) * $results_per_page;
-	$sql = " SELECT * FROM ".$datatable." LIMIT $start_from, ".$results_per_page;
+	$sql = " SELECT * FROM laptop LIMIT $start_from, ".$results_per_page;
 	$rs_result = $conn->query($sql); 
 	?>
 	<?php 
 		while($row = $rs_result->fetch_assoc()) {
+			
 	?> 
 	<div class="agile_top_brands_grids">
     			<div class="col-md-4 top_brand_left">
@@ -87,7 +76,7 @@ include("function.php");
     							<figure>
     								<div class="snipcart-item block">
     									<div class="snipcart-thumb">
-    										<a href="single.php"><img src=" <? echo $row["l_pic"]; ?>" alt="" class="img-responsive"></a>
+    										<a href="csingle.php?&product_id=<? echo $row["product_id"];?>"><img src=" <? echo $row["l_pic"]; ?>" alt="" class="img-responsive"></a>
     										<font face = "Noto Sans TC"><p><? echo $row["l_name"]; ?></p></f>
     											<h4><?php 
     											if($row["l_price"]==0){
@@ -121,47 +110,22 @@ include("function.php");
     			</div>
 <?php 
 }; 
-?>	
-</div>
+?>
+</div>	
 <!--//products-->
 <!--pagination-->
-<?php 
-$sql = " SELECT COUNT(product_id) AS total FROM ".$datatable;
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$total_pages = ceil($row["total"] / $results_per_page); 
-//跟下面的合再一起
-/*  
-for ($i=1; $i<=$total_pages; $i++) {  
-            echo "<a href='wear.php?page=".$i."'";
-            if ($i==$page)  echo " class='curPage'";
-            echo ">".$i."</a> "; 
-}; 
-*/; 
-?>
 <nav class="numbering">
-	<ul class="pagination paging">
-		<li>
-			<a href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
-		<li class="active"><a href="3c.php?page=1">1<span class="sr-only">(current)</span></a></li>
-		<li><a href="3c.php?page=2">2</a></li>
-		<li><a href="3c.php?page=3">3</a></li>
-		<li><a href="3c.php?page=4">4</a></li>
-		<li><a href="#3c.php?page=5">5</a></li>
-		<li>
-			<a href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
-	</ul>
+    <ul class="pagination paging">
+        <li>
+            <a>
+            <?php
+            include("paging.php");
+            ?>
+            </a>
+        </li>
+    </ul>
 </nav>
 <!--//pagination-->
-			<div class="clearfix"> </div>
-		</div>
-	</div>
 <?php
 include("footer.php");
 ?>

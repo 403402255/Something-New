@@ -1,16 +1,9 @@
 <!-- //SQL -->
 <?php
-	$servername = "rds-mysql.cwougcernbij.ap-northeast-1.rds.amazonaws.com";
-	$username = "User";
-	$password = "12345678";
-	$dbname = "project";
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	mysqli_query($conn, 'SET CHARACTER SET utf8');
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
+	include("config.php");
+	$sql = " SELECT *  FROM brands ";
+    $rs_result = $conn->query($sql);
+    $rs_result1 = $conn->query($sql);
 ?>
 <!-- //SQL -->
 <!DOCTYPE html>
@@ -48,88 +41,93 @@
 				});
 			});
 		</script>
-		<!--//start-smoth-scrolling -->
-		<style>
-
-		</style>
 	</head>
 	<body>
-		<!-- header -->
-		<div class="agileits_header">
-			<div class="container">
-				<div class="w3l_offers">
-					<p>新品出爐 <a href="products.php">CHECK NOW</a></p>
-				</div>
-				<div class="agile-login">
-					<ul>
-						<li><a href="registered.php"> Create Account </a></li>
-						<li><a href="login.php">Login</a></li>
-						<li><a href="contact.php">Help</a></li>
-						<li><span class="glyphicon glyphicon-user"></span><a href="user.php">User</a></li>
-					</ul>
-				</div>
-				<div class="clearfix"> </div>
-			</div>
+<!-- header -->
+<div class="agileits_header">
+	<div class="container">
+		<div class="w3l_offers">
+			<p>新品出爐 <a href="products.php">CHECK NOW</a></p>
 		</div>
-
-		<div class="logo_products">
-			<div class="container">
-				<div class="w3ls_logo_products_left1">
-					<ul class="phone_email">
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Mail us : SOMETHING NEW</li>
-
-					</ul>
-				</div>
-				<div class="w3ls_logo_products_left">
-
-					<div id="myNav" class="overlay">
-						<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-						<div class="overlay-content">
-							<a href="wear.php"><u>WEARs</u></a>
-							<div class="newspaper">
-								<a href="products.php">Addias</a>
-								<a href="products.php">Converse</a>
-								<a href="products.php">Nike</a> 
-								<a href="products.php">NewBalance</a>
-								<a href="products.php">Vans</a>
-							</div>
-						</div>
-						<div class="overlay-content">
-							<a href="3c.php"><u>3Cs</u></a>
-							<div class="newspaper">
-								<a href="products.php">Acer</a>
-								<a href="products.php">Asus</a>
-								<a href="products.php">Apple</a>
-								<a href="products.php">Lenovo</a>
-							</div>
-						</div>
-					</div>
-					<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; SOMETHING NEW</span>
-				</div>
-				<!--SEARCH |search.php很容易被玩壞-->
-
-				<ul class="nav navbar-nav navbar-right">
-					<div style="padding:20px">
-						<li><a href="#search" onclick="on()" class="glyphicon glyphicon-search"></a></li>
-					</div>
-				</ul>
-
-
-				<div id="overlay" onclick="off()">
-					<div id="search">
-						<button type="button" class="close">×</button>
-						<form  action="search.php" method="get">
-							<input type="search" id="auto_autocomplete" type="text" placeholder="Search for something NEW..." />
-							<button type="submit" class="btn">Search</button>
-						</form>
-					</div>
-				</div>
-
-				<!--//SEARCH 很容易被玩壞-->   
-				<div class="clearfix"> </div>
-			</div>
+		<div class="agile-login">
+			<ul>
+				<li><a href="registered.php"> Create Account </a></li>
+				<li><a href="login.php">Login</a></li>
+				<li><a href="contact.php">Help</a></li>
+				<li><span class="glyphicon glyphicon-user"></span><a href="user.php">sh@mail.com</a></li>
+			</ul>
 		</div>
-		<!-- //header -->
+		<div class="clearfix"> </div>
+	</div>
+</div>
+
+<div class="logo_products">
+	<div class="container">
+		<div class="w3ls_logo_products_left1">
+			<ul class="phone_email">
+				<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Mail us : SOMETHING NEW</li>
+
+			</ul>
+		</div>
+		<div class="w3ls_logo_products_left">
+
+			<div id="myNav" class="overlay">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<div class="overlay-content">
+					<a href="wear.php"><u>WEARs</u></a>
+					<div class="newspaper">
+						<?php
+						while($row = $rs_result->fetch_assoc()) {
+							if ($row['brand_category']==1) {
+								?> 
+								<form action="products.php?<?php echo $row["brand_name"]?>" method="post">
+									<input type="hidden" name="brand_id" value="<?php echo $row["brand_id"]?>">
+									<input type="hidden" name="brand_name" value="<?php echo $row["brand_name"]?>">
+									<button type="submit"><?php echo $row["brand_name"]?></button>
+								</form>
+								<?php 
+							}
+						}
+						?>
+					</div>
+				</div>
+				<div class="overlay-content">
+					<a href="3c.php"><u>3Cs</u></a>
+					<div class="newspaper">
+						<?php
+						while($row1 = $rs_result1->fetch_assoc()) {
+							if ($row1['brand_category']==2) {
+								?> 
+								<form action="products.php?<?echo $row1["brand_name"]?>" method="post">
+									<input type="hidden" name="brand_id" value="<?echo $row1["brand_id"]?>">
+									<input type="hidden" name="brand_name" value="<?echo $row1["brand_name"]?>">
+									<button type="submit"><?echo $row1["brand_name"]?></button>
+								</form>
+								<?php 
+							}
+						}
+						?>
+					</div>
+				</div>
+			</div>
+			<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; SOMETHING NEW</span>
+		</div>
+<!--SEARCH-->
+<div class="w3l_search">
+	<form action="#" method="post">
+		<input type="search" name="Search" placeholder="Search for a Product..." required="">
+		<button type="submit" class="btn btn-default search" aria-label="Left Align">
+			<i class="fa fa-search" aria-hidden="true"> </i>
+		</button>
+			
+	</form>
+</div>
+				</div>
+<!--SEARCH-->
+<div class="clearfix"> </div>
+</div>
+</div>
+<!-- //header -->
 
 		<script>
 
@@ -140,42 +138,6 @@
 			function closeNav() {
 				document.getElementById("myNav").style.width = "0%";
 			}
-			function on() {
-				document.getElementById("overlay").style.display = "block";
-			}
-
-			function off() {
-				document.getElementById("overlay").style.display = "none";
-			}
-
-			$(function () {
-				$('a[href="#search"]').on('click', function(event) {
-					event.preventDefault();
-					$('#search').addClass('open');
-					$('#search > form > input[type="search"]').focus();
-				});
-
-				$('#search, #search button.close').on('click keyup', function(event) {
-					if (event.target == this || event.target.className == 'close' || event.keyCode == 27) {
-						$(this).removeClass('open');
-					}
-				});
-
-
-				$('form').submit(function(event) {
-					event.preventDefault();
-					return false;
-				})
-
-			});
-			$(function() {
-            $('#auto_autocomplete').autocomplete({
-                source: "search.php",
-                minLength: 1
-            });
-            });
-
-
 		</script>
 
 	</body>

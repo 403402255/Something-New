@@ -5,32 +5,29 @@
 			<div class="categories">
 				<h2>Categories</h2>
 				<ul class="cate">
-					<li><a href="news.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>News</a></li>
-					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Accessories</a></li>
+					<li><a href="news.php?&brand_name=<?echo $name?>&brand_id=<?echo $filter?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>News</a></li>
+					<li><a href="accessories.php?&brand_name=<?echo $name?>&brand_id=<?echo $filter?>"><i class='fa fa-arrow-right' aria-hidden='true'></i>Accessories</a></li>
 					<ul>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Bags</a></li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Hats</a></li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Socks</a></li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Others</a> </li>
+						<li><a href="accessories.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mens</a></li>
+						<li><a href="accessories.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Womens</a></li>
+						<li><a href="accessories.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Kids</a></li>
+						<li><a href="accessories.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Others</a> </li>
 
 					</ul>
-					<li><a href='products.php'><i class='fa fa-arrow-right' aria-hidden='true'></i>Outfits</a></li>
+					<li><a href="outfits.php?outfits&brand_name=<?echo $name?>&brand_id=<?echo $filter?>"><i class='fa fa-arrow-right' aria-hidden='true'></i>Outfits</a></li>
 					<ul>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mens Wears</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Womens Wears</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Kids Wears</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Others</a> </li>
+						<li><a href="outfits.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mens Wears</a> </li>
+						<li><a href="outfits.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Womens Wears</a> </li>
+						<li><a href="outfits.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Kids Wears</a> </li>
+						<li><a href="outfits.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Others</a> </li>
 
 					</ul>
-					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Shoes</a></li>
+					<li><a href="shoes.php?shoes&brand_name=<?echo $name?>&brand_id=<?echo $filter?>"><i class='fa fa-arrow-right' aria-hidden='true'></i>Shoes</a></li>
 					<ul>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Lifestyle</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Running</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Training&Gym</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Basketball</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Football</a> </li>
-						<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Customize</a> </li>
-						<li><a href='products.php'><i class='fa fa-arrow-right' aria-hidden='true'></i>Others</a> </li>
+						<li><a href="shoes.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Mens Shoes</a> </li>
+						<li><a href="shoes.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Womens Shoes</a> </li>
+						<li><a href="shoes.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Kids Shoes</a> </li>
+						<li><a href="shoes.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>Others</a> </li>
 					</ul>
 				</ul>
 			</div>																			

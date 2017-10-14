@@ -12,10 +12,10 @@ if ($conn->connect_error) {
 } 
 
 
-function getbrands(){
+function getwbrands(){
 
 	global $conn;
-	$get_brands = "select * from brands where brand_id";
+	$get_brands = "select * from brands where brand_category = 1 ";
 	$run_brands = mysqli_query($conn,$get_brands);
 
 	while($row_brands=mysqli_fetch_array($run_brands)){
@@ -23,7 +23,23 @@ function getbrands(){
 		$brand_title = $row_brands['brand_name'];
 		$brand_id = $row_brands['brand_id'];
 		echo" 
-			<li><a href='products.php?$brand_id'><i class='fa fa-arrow-right'><font color='999999'>$brand_title</font></i></a></li>
+			<li><a href='products.php?$brand_title'><i class='fa fa-arrow-right'><font color='999999'>$brand_title</font></i></a></li>
+					";
+
+				}
+			}
+function getcbrands(){
+
+	global $conn;
+	$get_brands = "select * from brands where brand_category = 2 ";
+	$run_brands = mysqli_query($conn,$get_brands);
+
+	while($row_brands=mysqli_fetch_array($run_brands)){
+
+		$brand_title = $row_brands['brand_name'];
+		$brand_id = $row_brands['brand_id'];
+		echo" 
+			<li><a href='products.php?$brand_title'><i class='fa fa-arrow-right'><font color='999999'>$brand_title</font></i></a></li>
 					";
 
 				}
