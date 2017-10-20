@@ -19,10 +19,10 @@ include("function.php");
 			<div class="categories">
 				<h2>Categories</h2>
 				<ul class="cate">
-					<li><a href="#.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>BRANDS</a></li>
+					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>BRANDS</a></li>
 					<ul>
 						<?php
-						getbrands();//之後改依類別顯示
+						getwbrands();//之後改依類別顯示
 						?>
 					</ul>
 				</ul>
@@ -49,32 +49,21 @@ include("function.php");
 					<div class="clearfix"> </div>
 				</div>
 			</div>
-		<!--加filter function-->
 
 <!--//productsnav->
 <!--products-->
 	<?php
-	$servername = "rds-mysql.cwougcernbij.ap-northeast-1.rds.amazonaws.com";
-	$username = "User";
-	$password = "12345678";
-	$dbname = "project";
-	$datatable = "outfits";//改table:(O+S+A)
+	$datatable = "product";
 	$results_per_page = 18;
-
-	$conn = new mysqli($servername, $username, $password, $dbname);
-	mysqli_query($conn, 'SET CHARACTER SET utf8');
-
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	} 
 
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 	$start_from = ($page-1) * $results_per_page;
-	$sql = " SELECT * FROM ".$datatable." LIMIT $start_from, ".$results_per_page;
+	$sql = " SELECT * FROM product LIMIT $start_from, ".$results_per_page;
 	$rs_result = $conn->query($sql); 
 	?>
 	<?php 
 		while($row = $rs_result->fetch_assoc()) {
+			
 	?> 
 	<div class="agile_top_brands_grids">
     			<div class="col-md-4 top_brand_left">
@@ -87,11 +76,11 @@ include("function.php");
     							<figure>
     								<div class="snipcart-item block">
     									<div class="snipcart-thumb">
-    										<a href="single.php"><img src=" <? echo $row["o_pic"]; ?>" alt="" class="img-responsive"></a>
-    										<font face = "Noto Sans TC"><p><? echo $row["o_name"]; ?></p></f>
+    										<a href="single.php?&product_id=<? echo $row["product_id"];?>"><img src=" <? echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
+    										<font face = "Noto Sans TC"><p><? echo $row["p_name"]; ?></p></f>
     											<h4><?php 
-    											if($row["o_price"]==0){
-    												echo $row["o_price"];
+    											if($row["p_price"]==0){
+    												echo $row["p_price"];
     												}else{
     												echo"請洽門市查詢";
     												} ;
@@ -125,43 +114,17 @@ include("function.php");
 </div>	
 <!--//products-->
 <!--pagination-->
-<?php 
-$sql = " SELECT COUNT(product_id) AS total FROM ".$datatable;
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$total_pages = ceil($row["total"] / $results_per_page); 
-//跟下面的合再一起
-/*  
-for ($i=1; $i<=$total_pages; $i++) {  
-            echo "<a href='wear.php?page=".$i."'";
-            if ($i==$page)  echo " class='curPage'";
-            echo ">".$i."</a> "; 
-}; 
-*/; 
-?>
-
 <nav class="numbering">
-	<ul class="pagination paging">
-		<li>
-			<a href="#" aria-label="Previous">
-				<span aria-hidden="true">&laquo;</span>
-			</a>
-		</li>
-		<li class="active"><a href="wear.php?page=1">1<span class="sr-only">(current)</span></a></li>
-		<li><a href="wear.php?page=2">2</a></li>
-		<li><a href="wear.php?page=3">3</a></li>
-		<li><a href="wear.php?page=4">4</a></li>
-		<li><a href="wear.php?page=5">5</a></li>
-		<li>
-			<a href="#" aria-label="Next">
-				<span aria-hidden="true">&raquo;</span>
-			</a>
-		</li>
-	</ul>
+    <ul class="pagination paging">
+        <li>
+            <a>
+            <?php
+            include("paging.php");
+            ?>
+            </a>
+        </li>
+    </ul>
 </nav>
-<div class="clearfix"> </div>
-</div>
-</div>
 <!--//pagination-->
 <?php
 include("footer.php");

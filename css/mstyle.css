@@ -64,8 +64,24 @@ ul.sbreadcrumb li a:hover {
     transition: 0.3s;
 }
 
+.overlay button {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 24px;
+    background-color: transparent;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+    border: transparent;
+}
+
 .overlay a:hover, .overlay a:focus {
     color: #f1f1f1;
+}
+
+.overlay button:hover, .overlay button:focus {
+    color: #f1f1f1;
+    outline: 0;
 }
 
 .overlay .closebtn {
@@ -270,3 +286,4 @@ ul.sbreadcrumb li a:hover {
     padding: 10px 17px;
     font-size: 27px;
 }
+

@@ -7,7 +7,7 @@
     $conn=mysql_connect($db_local,$db_username,$db_passwd);
     mysql_select_db($db_select);
 
-    $query=mysql_query("SELECT * FROM `shoes` WHERE `name` like '%" . $_GET['term'] . "%'"); 
+    $query=mysql_query("SELECT * FROM `product` WHERE `p_name` like '%" . $_GET['term'] . "%'"); 
     while($row=mysql_fetch_array($query)){
     }
 

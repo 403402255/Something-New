@@ -22,7 +22,7 @@ include("header.php");
     $(this).removeClass("btn-default").addClass("btn-primary");   
 });
     });
-</script>	
+</script>   
 
 <!-- userinfo -->
 <br>
