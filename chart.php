@@ -2,15 +2,7 @@
 <script src="modal.js"></script>
 
 
-    <div class="modal-body">
-        <!-- Main content -->
-        <section class="content">
-                <div class="box-body">
-                  <div class="chart">
-                    <canvas id="areaChart" height="250"></canvas>
-                  </div>
-                </div>
-        </section>
+  
         <script>
       $(function () {
 
