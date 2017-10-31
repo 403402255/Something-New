@@ -28,26 +28,19 @@ function closeNav() {
 			<h2>Register Here</h2>
 			<div class="login-form-grids">
 				<h5>profile information</h5>
-				<form action="#" method="post">
-					<input type="text" placeholder="First Name..." required=" " >
-					<input type="text" placeholder="Last Name..." required=" " >
-				</form>
-				<div class="register-check-box">
-					<div class="check">
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>Subscribe to Newsletter</label>
-					</div>
-				</div>
-				<h6>Login information</h6>
-					<form action="#" method="post">
-					<input type="email" placeholder="Email Address" required=" " >
-					<input type="password" placeholder="Password" required=" " >
-					<input type="password" placeholder="Password Confirmation" required=" " >
+				<form action="register_function.php" method="post">
+					<input type="text" name="account" placeholder="帳號" required=" " >
+					<input type="text" name="name" placeholder="暱稱" required=" " >
+					<input type="email" name="email" placeholder="Email" required=" " >
+					<input type="text" name="phone" placeholder="電話" required=" " >
+					<input type="password" placeholder="密碼" required=" " >
+					<input type="password" name="password" placeholder="密碼確認" required=" " >
 					<div class="register-check-box">
 						<div class="check">
-							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>I accept the terms and conditions</label>
+							<label class="checkbox"><input type="checkbox" name="checkbox"><i> </i>我同意相關規定</label>
 						</div>
 					</div>
-					<input type="submit" value="Register">
+					<input type="submit" value="送出註冊">
 				</form>
 			</div>
 			<div class="register-home">

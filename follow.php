@@ -143,7 +143,7 @@ include("header.php");
                                             ?> 
                                             <div class="panel panel-default panel-horizontal">
                                                 <div class="panel-heading text-center" style="width:10em;">
-                                                    <img src="<?echo $row["brand_pic"];?>" alt="" class="img-responsive">
+                                                    <img src="<?phpecho $row["brand_pic"];?>" alt="" class="img-responsive">
                                                     <hr/>
                                                     <span><h5>2 weeks</h5><span>
                                                     </div>
@@ -151,9 +151,9 @@ include("header.php");
                                                     <div class="panel-body">                
 
                                                         <div class="col-xs-12 col-md-12 section-box">
-                                                            <h2><div class="" style="padding-top: 20px;"><?echo $row["brand_name"];?></div></h2>
+                                                            <h2><div class="" style="padding-top: 20px;"><?phpecho $row["brand_name"];?></div></h2>
                                                             <p>
-                                                                OFFICIAL <a href="<?echo $row["brand_site"];?>" target="_blank"><span class="glyphicon glyphicon-new-window">
+                                                                OFFICIAL <a href="<?phpecho $row["brand_site"];?>" target="_blank"><span class="glyphicon glyphicon-new-window">
                                                                 </span></a>
                                                             </p>
                                                         </div>
@@ -182,7 +182,7 @@ include("header.php");
                                             ?> 
                                             <div class="panel panel-default panel-horizontal">
                                                 <div class="panel-heading text-center" style="width:10em;">
-                                                    <img src="<?echo $row["s_pic"];?>" alt="" class="img-responsive">
+                                                    <img src="<?phpecho $row["s_pic"];?>" alt="" class="img-responsive">
                                                     <hr/>
                                                     <span><h5>2 weeks</h5><span>
                                                     </div>
@@ -190,8 +190,8 @@ include("header.php");
                                                     <div class="panel-body">                
 
                                                         <div class="col-xs-12 col-md-12 section-box">
-                                                            <h2><div class="" style="padding-top: 20px;"><?echo $row["s_name"];?></div></h2>
-                                                            <br><p>OFFICIAL <a href="<?echo $row["s_site"];?>" target="_blank"><span class="glyphicon glyphicon-new-window">
+                                                            <h2><div class="" style="padding-top: 20px;"><?phpecho $row["s_name"];?></div></h2>
+                                                            <br><p>OFFICIAL <a href="<?phpecho $row["s_site"];?>" target="_blank"><span class="glyphicon glyphicon-new-window">
                                                                 </span></a>
                                                             </p>
                                                         </div>

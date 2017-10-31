@@ -1,6 +1,3 @@
-<?php
-include("header.php");
-?>
 <style>
 	body{ margin-top:20px;}
 	.glyphicon { margin-right:5px;}
@@ -42,16 +39,7 @@ include("header.php");
 		text-overflow: ellipsis;
 	}
 </style>
-<!-- breadcrumbs -->
-<div class="breadcrumbs">
-	<div class="container">
-		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-			<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li>Following brands</li>
-		</ol>
-	</div>
-</div>
-<!-- //breadcrumbs -->
+
 <?php
 $datatable = "brands";
 
@@ -68,7 +56,7 @@ while($row = $rs_result->fetch_assoc()) {
 
 						<div class="panel panel-default panel-horizontal">
 							<div class="panel-heading text-center" style="width:10em;">
-								<img src="<?echo $row["brand_pic"];?>" alt="" />
+								<img src="<?echo $row["brand_pic"];?>" alt="" height ="100" width ="100">
 								<hr/>
 								<span><h5>2 weeks</h5><span>
 								</div>
@@ -111,6 +99,3 @@ while($row = $rs_result->fetch_assoc()) {
 	<?php 
 }; 
 ?>	
-<?php
-include("footer.php");
-?>

@@ -88,11 +88,11 @@ function switchDisplay(item) {
 			<div class="agileinfo_single">
 				
 				<div class="col-md-4 agileinfo_single_left">
-					<img id="example" src="<? echo $row["l_pic"]; ?>" alt=" " class="img-responsive">
+					<img id="example" src="<?php echo $row["l_pic"]; ?>" alt=" " class="img-responsive">
 					
 				</div>
 				<div class="col-md-8 agileinfo_single_right">
-					<h2><? echo $row["l_name"]; ?>
+					<h2><?php echo $row["l_name"]; ?>	
 						<div class="popup" onclick="myFunc()"><div class="glyphicon glyphicon-plus-sign"></div>
   						<span class="popuptext" id="myPopup"><h4>Added to your save list!</h4></span>
 				</div>
@@ -112,7 +112,7 @@ function myFunc() {
 					</div>
 					<div class="snipcart-item block">
 						<div class="snipcart-thumb agileinfo_single_right_snipcart">
-							<span><? echo $row["l_price"]; ?></span>
+							<span><?php echo $row["l_price"]; ?></span>
 						</div>
 						<br>
 						<div class="snipcart-details agileinfo_single_right_details">

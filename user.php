@@ -21,6 +21,9 @@ include("header.php");
    });
 });
 </script>
+<?php 
+$sql = " SELECT *  FROM membership ";
+?>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- user -->
@@ -39,7 +42,7 @@ include("header.php");
                         <li><a href="follow.php"><i class="fa fa-tasks" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Following List</span></a></li>
                         <li><a href="giftshop.php"><i class="fa fa-gift" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Gift Shop</span></a></li>
                         <li><a href="game.php"><i class="fa fa-calendar" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Daliy Game</span></a></li>
-                        <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">User</span></a></li>
+                        <li><a href="eduser.php"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-xs hidden-sm">User</span></a></li>
                         <li><a href="#"><i class="fa fa-cog" aria-hidden="true"></i><span class="hidden-xs hidden-sm">Setting</span></a></li>
                     </ul>
                 </div>
@@ -68,9 +71,9 @@ include("header.php");
                                         <ul class="dropdown-menu">
                                             <li>
                                                 <div class="navbar-content">
-                                                    <span>Sherlock Holmes</span>
+                                                    <span><?php echo $_SESSION['username'];?></span>
                                                     <p class="text-muted small">
-                                                        sh@mail.com
+                                                        <?php echo $member_email;?>
                                                     </p>
                                                     <div class="divider">
                                                     </div>
@@ -84,7 +87,7 @@ include("header.php");
                     </header>
                 </div>
                 <div class="user-dashboard">
-                    <h1>Hello, SH</h1>
+                    <h1>Hello, <?php echo $_SESSION['username'];?></h1>
                     <div class="row">
                         <div class="col-md-5 col-sm-5 col-xs-12 gutter">
 <!--換的內容-->
@@ -124,13 +127,12 @@ include("header.php");
                 </div>
                 <!--//換的內容-->
             </div>
+            <div id="push"></div>
         </div>
-    </div>
-
-
+</div>
 </body>
 <br>
-<div class="clearfix"></div>
+
 <!-- //user -->
 <?php
 include("footer.php");

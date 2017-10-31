@@ -3,14 +3,14 @@ include("header.php");
 include("function.php");
 $name =$_REQUEST['brand_name'];
 $filter=$_REQUEST['brand_id'];//對應的brand_id
-    
+
 ?>
 <!--breadcrumbs-->
 <div class="breadcrumbs">
     <div class="container">
         <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
             <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-            <li><? echo $name; ?></li>
+            <li><?php echo $name; ?></li>
         </ol>
     </div>
 </div>
@@ -22,7 +22,7 @@ $filter=$_REQUEST['brand_id'];//對應的brand_id
         <div class="container target">
             <div class="row">
                 <div class="col-sm-10">
-                    <h1 class=""><font face="Antic"><? echo $name; ?></font></h1><br>
+                    <h1 class=""><font face="Antic"><?php echo $name; ?></font></h1><br>
                     <div class="btn-group btn-group-justified">
                         <div class="btn-group" role="group">
                             <button type="button" id="stars" class="btn btn-default" href="#tab1">
@@ -77,12 +77,12 @@ include("wenav.php");
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="single.php?product_id=<? echo $row["product_id"];?>"><img src=" <? echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
-                                        <font face = "Noto Sans TC"><p><? echo $row["p_name"]; ?></p></f>
-                                            <h4><? echo $row["p_price"]; ?></h4>
+                                        <a href="single.php?product_id=<?php echo $row["product_id"];?>"><img src=" <?php echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
+                                        <font face = "Noto Sans TC"><p><?php echo $row["p_name"]; ?></p></f>
+                                            <h4><?php echo $row["p_price"]; ?></h4>
                                         </div>
                                         <div class="snipcart-details top_brand_home_details">
-                                            <form action="#" method="post">
+                                            <form action="post" method="products.php?action=add&code=<?php echo $product_array[$key]["code"]; ?>">
                                                 <fieldset>
                                                     <input type="hidden" name="cmd" value="savelist">
                                                     <input type="hidden" name="add" value="1">

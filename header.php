@@ -1,9 +1,11 @@
 <!-- //SQL -->
 <?php
 	include("config.php");
+	session_start();
 	$sql = " SELECT *  FROM brands ";
     $rs_result = $conn->query($sql);
     $rs_result1 = $conn->query($sql);
+
 ?>
 <!-- //SQL -->
 <!DOCTYPE html>
@@ -51,10 +53,25 @@
 		</div>
 		<div class="agile-login">
 			<ul>
-				<li><a href="registered.php"> Create Account </a></li>
-				<li><a href="login.php">Login</a></li>
-				<li><a href="contact.php">Help</a></li>
-				<li><span class="glyphicon glyphicon-user"></span><a href="user.php">sh@mail.com</a></li>
+					<?php if (empty($_SESSION['username'])) {
+						echo "<li><a href='registered.php'> Create Account </a></li>
+						<li><a href='login.php'>Login</a></li>
+						<li><a href='contact.php'>Help</a></li>
+						<li><span class='glyphicon glyphicon-user'></span><a href='user.php'>User</a></li>";
+								}
+						else{
+							echo "
+						<li><a href='contact.php'>Help</a></li>
+						<li>
+						<span class='glyphicon glyphicon-user'></span>
+						<a href='user.php?memacc={$_SESSION['username']}'>{$_SESSION['username']}</a>
+						</li>
+						<li><a href='log_out.php'>Log out</a></li>";
+
+						}
+					 ?>
+						
+			</ul>
 			</ul>
 		</div>
 		<div class="clearfix"> </div>
@@ -98,10 +115,10 @@
 						while($row1 = $rs_result1->fetch_assoc()) {
 							if ($row1['brand_category']==2) {
 								?> 
-								<form action="products.php?<?echo $row1["brand_name"]?>" method="post">
-									<input type="hidden" name="brand_id" value="<?echo $row1["brand_id"]?>">
-									<input type="hidden" name="brand_name" value="<?echo $row1["brand_name"]?>">
-									<button type="submit"><?echo $row1["brand_name"]?></button>
+								<form action="products.php?<?php echo $row1["brand_name"]?>" method="post">
+									<input type="hidden" name="brand_id" value="<?php echo $row1["brand_id"]?>">
+									<input type="hidden" name="brand_name" value="<?php echo $row1["brand_name"]?>">
+									<button type="submit"><?php echo $row1["brand_name"]?></button>
 								</form>
 								<?php 
 							}

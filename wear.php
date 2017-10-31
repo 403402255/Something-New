@@ -2,6 +2,59 @@
 include("header.php");
 include("function.php");
 ?>
+<style>
+	.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.popup .popuptext {
+    visibility: hidden;
+    width: 160px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -80px;
+}
+
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+</style>
 <!--breadcrumbs-->
 <div class="breadcrumbs">
 	<div class="container">
@@ -70,14 +123,23 @@ include("function.php");
     				<div class="hover14 column">
     					<div class="agile_top_brand_left_grid">
     						<div class="agile_top_brand_left_grid_pos">
-    							<img src="images/offer.png" alt="" class="img-responsive">
+    							<div class="popup" onclick="myFunc()"><div class="glyphicon glyphicon-plus-sign"></div>
+  						<span class="popuptext" id="myPopup"><h4>Added to your save list!</h4></span>
+				</div>
+<script>
+	//popups
+function myFunc() {
+    var popup = document.getElementById("myPopup");
+    popup.classList.toggle("show");
+}
+</script>
     						</div>
     						<div class="agile_top_brand_left_grid1">
     							<figure>
     								<div class="snipcart-item block">
     									<div class="snipcart-thumb">
-    										<a href="single.php?&product_id=<? echo $row["product_id"];?>"><img src=" <? echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
-    										<font face = "Noto Sans TC"><p><? echo $row["p_name"]; ?></p></f>
+    										<a href="single.php?&product_id=<?php echo $row["product_id"];?>"><img src=" <?php echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
+    										<font face = "Noto Sans TC"><p><?php echo $row["p_name"]; ?></p></f>
     											<h4><?php 
     											if($row["p_price"]==0){
     												echo $row["p_price"];
@@ -97,7 +159,7 @@ include("function.php");
     													<input type="hidden" name="currency_code" value="NTD">
     													<input type="hidden" name="return" value="">
     													<input type="hidden" name="cancel_return" value="">
-    													<input type="submit" name="SAVE" value="SAVE" class="button">
+    													<input type="submit" name="SAVE" value="View" class="button">
     												</fieldset>
     											</form>
     										</div>
