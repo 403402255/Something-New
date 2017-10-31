@@ -49,7 +49,7 @@
 <div class="agileits_header">
 	<div class="container">
 		<div class="w3l_offers">
-			<p>新品出爐 <a href="products.php">CHECK NOW nothing1031</a></p>
+			<p>新品出爐 <a href="products.php">CHECK NOW</a></p>
 		</div>
 		<div class="agile-login">
 			<ul>
