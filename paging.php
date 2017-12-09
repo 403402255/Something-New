@@ -21,8 +21,7 @@ $row = mysqli_fetch_row($result);
 if($page > 1) {
     
     
-    echo "<td><a href=\"products.php?page=" . $pre . "\" aria-label='Previous'>
-                <span aria-hidden='true'>&laquo;</span></a></td>"; 
+    echo "<td><a href=\"products.php?page=" . $pre . "\" aria-label='Previous'><span aria-hidden='true'>&laquo;</span></a></td>"; 
 
 }
 
@@ -30,9 +29,9 @@ if($pages <= $pageNum){
 
     for($i=$start; $i<=$pages; $i++){ 
         if($i == $page){ 
-                echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>"; 
+                //echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>"; 
             }else{
-                echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
+                //echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
                 }
         } 
     }else{
@@ -46,9 +45,9 @@ if($pages <= $pageNum){
             for($i=$start; $i<=$end; $i++){
 
                 if($i == $page){
-                    echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>";  
+                    //echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>";  
                 }else{
-                    echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
+                    //echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
                 }
 
             }
@@ -59,9 +58,9 @@ if($pages <= $pageNum){
             for($i=$start; $i<=$end; $i++){
 
                 if($i == $page){
-                    echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>"; 
+                    //echo "<td><a href=\"products.php?page=" . $i ."\" >". $i . "</a></td>"; 
                 }else{
-                    echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
+                    //echo "<td><a href=\"products.php?page=" . $i ."\">" . $i . "</a> </td>";
                 }
 
             }
@@ -72,9 +71,7 @@ if($pages <= $pageNum){
 
     if($page < $pages) { 
 
-        echo "<td><a href=\"products.php?page=" . $next . "\" aria-label='Next'>
-                <span aria-hidden='true'>&raquo;</span>
-            </a></td>";
+        echo// "<td><a href=\"products.php?page=" . $next . "\" aria-label='Next'><span aria-hidden='true'>&raquo;</span></a></td>";
 
     }
 

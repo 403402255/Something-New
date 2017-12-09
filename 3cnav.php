@@ -30,16 +30,17 @@
 				<div class="products-right-grids">
 					<div class="sorting">
 						<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option> 
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by date</option>
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>最相關</option>
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>最高人氣</option> 
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>價格由高至低</option>
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>價格由低至高</option>
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>上架日期</option>
 						</select>
 					</div>
 					<div class="sorting-left">
-						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
+						<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>每頁18項產品數</option>
+							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>每頁36項產品數</option>
 						</select>
 					</div>
 					<div class="clearfix"> </div>

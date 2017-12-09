@@ -28,6 +28,9 @@ function closeNav() {
 			<h2>Register Here</h2>
 			<div class="login-form-grids">
 				<h5>profile information</h5>
+
+
+
 				<form action="register_function.php" method="post">
 					<input type="text" name="account" placeholder="帳號" required=" " >
 					<input type="text" name="name" placeholder="暱稱" required=" " >
@@ -42,6 +45,9 @@ function closeNav() {
 					</div>
 					<input type="submit" value="送出註冊">
 				</form>
+
+
+
 			</div>
 			<div class="register-home">
 				<a href="index.php">Home</a>
@@ -53,3 +59,23 @@ function closeNav() {
 <?php
 include("footer.php");
 ?>
+
+
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+
+<form name="form" method="post" action="register_finish.php">
+帳號：<input type="text" name="id" /> <br>
+密碼：<input type="password" name="pw" /> <br>
+再一次輸入密碼：<input type="password" name="pw2" /> <br>
+電話：<input type="text" name="telephone" /> <br>
+地址：<input type="text" name="address" /> <br>
+備註：<textarea name="other" cols="45" rows="5"></textarea> <br>
+<input type="submit" name="button" value="確定" />
+</form>
+
+
