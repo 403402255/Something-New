@@ -1,101 +1,62 @@
 <?php
 include("header.php");
 include("function.php");
-if(isset($_REQUEST['brand_name']) && $_REQUEST['product_id']!="")
-{
-    $name =$_REQUEST['brand_name'];
-$product =$_REQUEST['product_id']; 
+//$name =$_REQUEST['brand_name'];
+//$filter=$_REQUEST['brand_id'];//對應的brand_id
+$bid=$_SERVER['QUERY_STRING'];
+//$brandid = $_SESSION['brand_id'];
 
-}
-
-$mname = $_SESSION['username'];
-$bsql =  "SELECT *  FROM  brands  WHERE brand_id=".$bid ;
-$updatetime =  "SELECT *  FROM  crawler_updatetime  WHERE brand_id=".$bid ;
-$GLOBALS['id']=$bid;
-
-$GLOBALS['product_id']= $product_id;
-
-$update_result = $conn->query($updatetime); 
-$max=0;
-while($brow = $update_result->fetch_assoc()) {
-if ($brow["craweler_id"]>$max) {
-    $max=$brow["craweler_id"];
-    $last_updatetime=$brow["updatetime"];
-    }
-}
+?>
+<?php 
+$bsql = " SELECT *  FROM brands WHERE brand_id= ".$bid;
 $rs_result = $conn->query($bsql); 
-while($brow = $rs_result->fetch_assoc()) {
-    $GLOBALS['name'] = $brow["brand_name"];
-    ?> 
-    <!--breadcrumbs-->
-    <div class="breadcrumbs">
-        <div class="container">
-            <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-                <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首頁</a></li>
-                <li><?php echo $brow["brand_name"];?></li>
-            </ol>
-        </div>
-    </div>
-    <!--//breadcrumbs-->
-    <br>
-
+        while($brow = $rs_result->fetch_assoc()) {
+?>
+<!--breadcrumbs-->
+<div class="breadcrumbs">
     <div class="container">
-        <div class="col-lg-6 col-sm-6">
-            <div class="container target">
-                <div class="row">
-                    <div class="col-sm-10">
-                        <h1 class=""><font face="Antic"><?php echo $brow["brand_name"];?> <font size="2">最後更新: <?php echo $last_updatetime;?></font>
-                            <form action="brand_fuction.php" method="POST" >
-                                <div class="form-group">
-                                    <input type="hidden" name="brand_id" value="<?php echo $brow["brand_id"]?>">
-                                    <input type="hidden" name="member_name" value="<?php echo $mname?>">
-                                    <input type="hidden" name="brand_name" value="<?php echo $brow["brand_name"]?>">
-                                    <?//session 寫入?>
-                                    <input type="hidden" name="brand_link" value="<?php echo $brow["brand_link"]?>">
-                                    <?//session 寫入?>
-                                    <input type="hidden" name="brand_pic" value="<?php echo $brow["brand_pic"]?>">
-                                    <button type="submit" name="cc" class="btn btn-default"><i class="fa fa-bell-o" aria-hidden="true"></i></button>
-                                </input>
-                            </div>
-                        </form>
+        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+            <li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首頁</a></li>
+            <li><?php echo $brow["brand_name"];?></li>
+        </ol>
+    </div>
+</div>
+<!--//breadcrumbs-->
+<br>
+
+<div class="container">
+    <div class="col-lg-6 col-sm-6">
+        <div class="container target">
+            <div class="row">
+                <div class="col-sm-10">
+                    <h1 class=""><font face="Antic"><?php echo $brow["brand_name"];?></font></h1><br>
+                    <div class="btn-group btn-group-justified">
+                        <div class="btn-group" role="group">
+                            <button type="button" id="stars" class="btn btn-default" href="#tab1">
+                                <div class="hidden-xs">228</div>
+                                <div class="hidden-xs">產品數</div>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab">
+                                <div class="hidden-xs">3242</div>
+                                <div class="hidden-xs">追蹤人數</div>
+                            </button>
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab">
+                                <div class="hidden-xs">227</div>
+                                <div class="hidden-xs">正在追蹤</div>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </font></h1>
-
-            <br>
-            <div class="btn-group btn-group-justified">
-                <div class="btn-group" role="group">
-                    <button type="button" id="stars" class="btn btn-default" href="#tab1">
-                        <div class="hidden-xs">228</div>
-                        <div class="hidden-xs">產品數</div>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab">
-                        <div class="hidden-xs">3242</div>
-                        <div class="hidden-xs">追蹤人數</div>
-                    </button>
-                </div>
-                <div class="btn-group" role="group">
-                    <button type="button" id="stars" class="btn btn-default" href="#tab1" data-toggle="tab">
-                        <div class="hidden-xs">227</div>
-                        <div class="hidden-xs">正在追蹤</div>
-                    </button>
-                </div>
             </div>
-
-   
-
-
         </div>
     </div>
 </div>
 </div>
-</div>
-</div>
-<?php 
-};
-?>
+<?php }?>
 <!--//brand-->
 <!--productsnav-->
 <?php
@@ -123,7 +84,7 @@ include("wenav.php");
                             <figure>
                                 <div class="snipcart-item block">
                                     <div class="snipcart-thumb">
-                                        <a href="csingle.php?<?php echo $row["product_id"];?>"><img src=" <?php echo $row["l_pic"]; ?>" alt="" class="img-responsive">
+                                        <a href="single.php?<?php echo $row["product_id"];?>"><img src=" <?php echo $row["l_pic"]; ?>" alt="" class="img-responsive">
                                         <font face = "Noto Sans TC"><p><?php echo $row["l_name"]; ?></p></f>
                                             <h4><?php echo $row["l_price"]; ?></h4>
                                         </div>

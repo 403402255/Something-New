@@ -74,7 +74,7 @@ include("wenav.php");//productsnav
 
     
  
-    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 1 AND p_price like '%NT$%' ORDER BY CONVERT(REPLACE (p_price, 'NT$', ''),UNSIGNED INTEGER) DESC LIMIT 0,18";
+    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 1 AND p_price like '%NT$%' ORDER BY CONVERT(REPLACE (p_price, 'NT$', ''),UNSIGNED INTEGER) LIMIT 0,18";
 
 
 

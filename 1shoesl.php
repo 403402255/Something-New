@@ -67,7 +67,10 @@ include("wenav.php");//productsnav
 
     if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
     $start_from = ($page-1) * $results_per_page;
-    $sql = " SELECT *  FROM products WHERE brand_id = ".$bid." AND category_id = 3 LIMIT 0,18";
+    $sql = " SELECT *  FROM products WHERE brand_id = ".$bid." AND category_id = 3 AND p_price like '%NT$%' ORDER BY CONVERT(REPLACE (p_price, 'NT$', ''),UNSIGNED INTEGER) LIMIT 0,18";
+
+
+
     //echo $sql;
     $rs_result = $conn->query($sql); 
     ?>

@@ -22,7 +22,7 @@
                         $username = $_SESSION['username'];
                         if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
                         $start_from = ($page-1) * $results_per_page;
-                        $sql = " SELECT *  FROM ".$datatable." WHERE member_name = '$username' ORDER BY id  DESC LIMIT $start_from, ".$results_per_page;
+                        $sql = " SELECT *  FROM ".$datatable." WHERE member_name = '$username' ORDER BY id DESC LIMIT $start_from, ".$results_per_page;
 
                         $rs_result = $conn->query($sql); 
                         ?>
@@ -38,7 +38,7 @@
                         ?> 
 
                         
-                        <img src="http://www.rlsandbox.com/img/profile.jpg" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
+                        <img src="<?php echo $row["image"];?>" alt="merkery_logo" class="visible-xs visible-sm circle-logo">
                     </a>
                 </div>
                 <div class="navi">
@@ -71,7 +71,10 @@
                                         </a>
                                     </li>
                                     <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="http://www.rlsandbox.com/img/profile.jpg" alt="user">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<?php echo $row["image"];?>" width="200%" alt="" class="hidden-md">
+
+
+
                                             <b class="caret"></b></a>
                                             <ul class="dropdown-menu">
                                                 <li>

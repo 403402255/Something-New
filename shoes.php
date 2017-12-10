@@ -59,18 +59,19 @@ include("wenav.php");//productsnav
 //---product---
 
     //$name =$_REQUEST['brand_name'];
-    $results_per_page = 18;
+    $results_per_page = 50;
     
-    $filter=$_REQUEST['brand_id']; 
+    //$filter=$_REQUEST['brand_id']; 
     $bid =$_REQUEST['brand_id'];
 
 
     if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
     $start_from = ($page-1) * $results_per_page;
-    $sql = " SELECT *  FROM products WHERE brand_id = ".$bid." AND category_id = 3  LIMIT 0,18";
 
-  
+   
+    $sql = " SELECT *  FROM products WHERE brand_id = ".$bid." AND category_id = 3 ORDER BY product_id DESC LIMIT 0,50";
 
+ 
 
     //echo $sql;
     $rs_result = $conn->query($sql); 

@@ -74,7 +74,7 @@ include("wenav.php");//productsnav
 
     if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
     $start_from = ($page-1) * $results_per_page;
-    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 2  LIMIT 0,18";
+    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 2 ORDER BY product_id DESC LIMIT 0,18";
     //echo $sql;
 
 

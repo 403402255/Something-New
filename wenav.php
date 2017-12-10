@@ -86,13 +86,17 @@
                          <select id="country" onchange="location.href=this.value" class="frm-field required sect"> <option>依價格排序</option>
 
 
+
+                          <option value="http://localhost/1accessoriesh.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 飾品(高到低)</option>
+                            <option value="http://localhost/1accessoriesl.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 飾品(低到高)</option>
+
+
                             <option value="http://localhost/1outfitsh.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i> &nbsp&nbsp&nbsp 服飾(高至低)</option>
 
 
 
-                            <option value="http://localhost/1outfitsl.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i  > &nbsp&nbsp&nbsp 服飾(低到高)</option> 
-                            <option value="http://localhost/1accessoriesh.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 飾品(高到低)</option>
-                            <option value="http://localhost/1accessoriesl.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 飾品(低到高)</option>
+                            <option value="http://localhost/1outfitsl.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i  > &nbsp&nbsp&nbsp 服飾(低至高)</option> 
+                 
                             <option value="http://localhost/1shoesh.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 鞋子(高到低)</option>
                             <option value="http://localhost/1shoesl.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right"><i class="fa fa-arrow-right" aria-hidden="true"></i > &nbsp&nbsp&nbsp 鞋子(低到高)</option>
                         </select>
@@ -106,10 +110,14 @@
                     </div>
                     <div class="sorting-left">
                         <select id="country" onchange="location.href=this.value" class="frm-field required sect"> <option>依型號排序</option>
-                            <option value="http://localhost/1outfits0.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   服飾(0~9,A~Z)</option>
-                            <option value="http://localhost/1outfitsz.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   服飾(Z~A-9~0)</option>
+
+
+
                            <option value="http://localhost/1accessories0.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   飾品(0~9,A~Z)</option>
                             <option value="http://localhost/1accessoriesz.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   飾品(Z~A-9~0)</option>
+                            <option value="http://localhost/1outfits0.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   服飾(0~9,A~Z)</option>
+                            <option value="http://localhost/1outfitsz.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   服飾(Z~A-9~0)</option>
+                          
                             <option value="http://localhost/1shoes0.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   鞋子(0~9,A~Z)</option>
                            <option value="http://localhost/1shoesz.php?&brand_name=<?php echo $GLOBALS['name1']?>&brand_id=<?php echo $GLOBALS['bid']?>"><i class="fa fa-arrow-right" aria-hidden="true"></i>   &nbsp&nbsp&nbsp   鞋子(Z~A-9~0)</option>
 

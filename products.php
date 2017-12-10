@@ -8,6 +8,7 @@ $product =$_REQUEST['product_id'];
 
 }
 
+
 $mname = $_SESSION['username'];
 $bsql =  "SELECT *  FROM  brands  WHERE brand_id=".$bid ;
 $updatetime =  "SELECT *  FROM  crawler_updatetime  WHERE brand_id=".$bid ;
@@ -100,12 +101,15 @@ while($brow = $rs_result->fetch_assoc()) {
 <!--productsnav-->
 <?php
 include("wenav.php");
-$results_per_page = 18;
+$results_per_page = 50;
 
 if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 $start_from = ($page-1) * $results_per_page;
-$sql = " SELECT *  FROM products WHERE brand_id= ".$bid." LIMIT $start_from, ".$results_per_page;
+$sql = " SELECT *  FROM products WHERE brand_id= ".$bid." ORDER BY product_id LIMIT $start_from, ".$results_per_page;
 //echo $sql;
+
+
+
 $rs_result = $conn->query($sql); 
 
 while($row = $rs_result->fetch_assoc()) {

@@ -120,7 +120,19 @@ while($row = $rs_result->fetch_assoc()) {
 
 			</div>
 			<div class="col-md-8 agileinfo_single_right">
-				<h2><?php echo $row["p_name"]; ?></h2>
+
+
+				<h2><?php echo $row["p_name"]; ?><a href ="<?php echo $row["p_site"];?>"><i class="glyphicon glyphicon-send"></i> 前往官網</a></h2>
+
+				
+
+
+
+
+
+
+
+
 					<span><i class="snipcart-details agileinfo_single_right_details">
 						<form action="product_function.php" method="POST" >
 							<input type="hidden" name="product_id" value="<?php echo $product_id?>">
@@ -173,12 +185,12 @@ while($row = $rs_result->fetch_assoc()) {
 
 					<div class="modal-body">
 						<form action="input.php" method="POST" >
-<!--
+
 							<div class="form-group">
 								<label for="inputComment">星等</label>
 								<?php include("rating.php");?>
 							</div><br>
--->
+
 							<div class="form-group">
 								<label for="inputComment">評價標題</label>
 								<input name="c_title" type="text" value="" class="form-control"  placeholder="寫下你的評價...">
@@ -231,8 +243,10 @@ if (isset($_GET["page"])) {
 	$page=1; 
 }; 
 $start_from = ($page-1) * $results_per_page;
-$sql = " SELECT *  FROM comment WHERE product_id =  ".$product_id." LIMIT $start_from, ".$results_per_page;
+$sql = " SELECT *  FROM comment WHERE product_id =  ".$product_id." LIMIT $start_from, " .$results_per_page;
 $rs_result = $conn->query($sql); 
+
+
 
 while($row = $rs_result->fetch_assoc()) {
 	?> 
@@ -245,7 +259,18 @@ while($row = $rs_result->fetch_assoc()) {
 					<div class="col-sm-3">
 						<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" class="img-rounded">
 						<div class="review-block-name"><?php echo $row["member_name"]?></div>
-						<div class="review-block-date"><?php echo $row["time"]?><br/>1 day ago</div>
+						<div class="review-block-date"><?php echo $datetime?><br/>1 day ago</div>
+
+
+
+
+
+
+
+
+
+
+
 					</div>
 					<div class="col-sm-9">
 						<div class="review-block-rate">

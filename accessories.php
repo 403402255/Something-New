@@ -74,8 +74,7 @@ include("wenav.php");//productsnav
 
     
  
-    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 1 LIMIT 0,18";
-
+    $sql = " SELECT *  FROM products WHERE brand_id = ".$filter." AND category_id = 1 ORDER BY product_id DESC LIMIT 0,18";
 
 
 

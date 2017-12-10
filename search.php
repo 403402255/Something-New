@@ -7,22 +7,20 @@
 </head>
 <body>
     <?php
-    include("header.php");
-
-    if(isset($_POST['search'])){
-     $query = $_POST['search'];
-    } 
-    //mysql_query("SET NAMES 'utf8'");  
+    if(isset($_post['search'])){
+     $query = $_post['search'];
+     $query = pref_replace("#[0-9a-z]#i","",$query);
+         
+    }
     
+    //mysql_query("SET NAMES 'utf8'");  
     $ssql = "SELECT * FROM products where p_name like '%$query%'";
-    $tem=$conn->query($ssql);
-    $count = mysqli_num_rows($tem);
+    $count = mysql_num_rows($ssql);
     if($count == 0){
         $output = '找不到商品,請再試試！';
         echo $output; 
     }else{
-    $tem=$conn->query($ssql);
-    while($srow = mysqli_fetch_array($tem)){
+    while($srow = mysql_fetch_array(ssql)){
        echo $srow['p_name']." ";
        echo $srow['p_model']."<br>";   
    }
