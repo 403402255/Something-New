@@ -127,9 +127,11 @@ function myFunc() {
     popup.classList.toggle("show");
 }
 </script>
-
+<?php
+var_dump($_SESSION['laptop_compare']);
+ ?>
 					<a href="javascript:;" onclick="switchDisplay('chart');" class="glyphicon glyphicon-signal">網路聲量</a>
-					<a href="add_compare.php?product_id=<?php echo $product_id ?>" class="glyphicon glyphicon-sort-by-attributes">加入比較</a>
+					<a href="add_compare.php?product_id=<?php echo $product_id;?>" class="glyphicon glyphicon-sort-by-attributes">加入比較</a>
 
 					<div class="w3agile_description">
 						<div class="row">

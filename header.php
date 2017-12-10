@@ -5,6 +5,11 @@
 	session_start();
 	$sql = " SELECT *  FROM brands ";
 	$_SESSION['laptop_compare'];
+	if (is_array($_SESSION['laptop_compare'])) {
+	}
+	else{
+		$_SESSION['laptop_compare']=array();
+	}
     $rs_result = $conn->query($sql);
     $rs_result1 = $conn->query($sql);
     $bid=$_SERVER['QUERY_STRING'];
@@ -140,7 +145,7 @@
 <!--SEARCH-->
 <div class="w3l_search">
 	<form action="search.php" method="post"> 
-		<input type="text" name="query" placeholder="找商品">
+		<input type="text" name="search" placeholder="找商品">
 		<button type="submit" class="btn btn-default search">
 		<i class="fa fa-search" aria-hidden="true"> </i>
 		</button>

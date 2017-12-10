@@ -150,6 +150,9 @@ function getlaptopinfo($mem){
 
 	$get_cpu = "select * from laptop_cpu_rank where cpu_id='$c_cpu_rank'";
 	$run_brands = mysqli_query($conn,$get_cpu);
+	$cpu_name='';
+	$Ghz='';
+	$rank='';
 	while($row_brands=mysqli_fetch_array($run_brands)){  //cpu
 		$cpu_name= $row_brands['name'];
 		$Ghz= $row_brands['Ghz'];

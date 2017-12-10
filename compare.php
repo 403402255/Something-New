@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("header.php");
 include("function.php");
 ?>
@@ -105,27 +106,28 @@ function change(attribute,order)
   var allElements = document.getElementsByTagName('*');
   for (var i = 0, n = allElements.length; i < n; i++)
   {
-    if (allElements[i].getAttribute(attribute) == order)
+    if (allElements[i].getAttribute(attribute) == order && allElements[i].getAttribute(attribute) !=='')
     {
       // Element exists with attribute. Add to array.
-      allElements[i].style.backgroundColor = "#F0FFFF";;
+      allElements[i].style.backgroundColor = "#F0FFFF";
     }
   }
 }
 var arr=[];
 arr=getAllElementsWithAttribute('ram');
 var i =Math.max.apply(null,arr).toString();
-change('ram',i)
+change('ram',i);
 
 var arr=[];
 arr=getAllElementsWithAttribute('rank');
 var i =Math.min.apply(null,arr).toString();
-change('rank',i)
+change('rank',i);
 
 var arr=[];
 arr=getAllElementsWithAttribute('weight');
 var i =Math.min.apply(null,arr).toString();
-change('weight',i)
+change('weight',i);
+
 </script>
 
 
