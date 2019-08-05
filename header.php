@@ -1,11 +1,21 @@
 <!-- //SQL -->
 <?php
-	include("config.php");
+
+    include("config.php");
 	session_start();
 	$sql = " SELECT *  FROM brands ";
+	$_SESSION['laptop_compare'];
+	if (is_array($_SESSION['laptop_compare'])) {
+	}
+	else{
+		$_SESSION['laptop_compare']=array();
+	}
     $rs_result = $conn->query($sql);
     $rs_result1 = $conn->query($sql);
+    $bid=$_SERVER['QUERY_STRING'];
 
+    //$GLOBALS['id']= $_POST['brand_id'];
+    //$GLOBALS['product']=$_POST['product_id'];
 ?>
 <!-- //SQL -->
 <!DOCTYPE html>
@@ -54,19 +64,21 @@
 		<div class="agile-login">
 			<ul>
 					<?php if (empty($_SESSION['username'])) {
-						echo "<li><a href='registered.php'> Create Account </a></li>
-						<li><a href='login.php'>Login</a></li>
-						<li><a href='contact.php'>Help</a></li>
-						<li><span class='glyphicon glyphicon-user'></span><a href='user.php'>User</a></li>";
+						echo "<li><a href='registered.php'>建立帳戶 </a></li>
+						<li><a href='login.php'>登入</a></li>
+						<li><a href='about.php'>關於我們</a></li>
+						
+						";
 								}
 						else{
 							echo "
-						<li><a href='contact.php'>Help</a></li>
 						<li>
 						<span class='glyphicon glyphicon-user'></span>
 						<a href='user.php?memacc={$_SESSION['username']}'>{$_SESSION['username']}</a>
 						</li>
-						<li><a href='log_out.php'>Log out</a></li>";
+						<li><a href='log_out.php'>登出</a></li>
+						<li><a href='about.php'關於我們</a></li>"
+						;
 
 						}
 					 ?>
@@ -82,7 +94,7 @@
 	<div class="container">
 		<div class="w3ls_logo_products_left1">
 			<ul class="phone_email">
-				<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Mail us : SOMETHING NEW</li>
+				<li><a href="contact.php" color=""><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i> Mail us : SOMETHING NEW</a></li>
 
 			</ul>
 		</div>
@@ -91,17 +103,17 @@
 			<div id="myNav" class="overlay">
 				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 				<div class="overlay-content">
-					<a href="wear.php"><u>WEARs</u></a>
+					<a href="wear.php"><u>服飾</u></a>
 					<div class="newspaper">
 						<?php
 						while($row = $rs_result->fetch_assoc()) {
 							if ($row['brand_category']==1) {
 								?> 
-								<form action="products.php?<?php echo $row["brand_name"]?>" method="post">
-									<input type="hidden" name="brand_id" value="<?php echo $row["brand_id"]?>">
-									<input type="hidden" name="brand_name" value="<?php echo $row["brand_name"]?>">
-									<button type="submit"><?php echo $row["brand_name"]?></button>
-								</form>
+								<li>
+								<a href='products.php?<?php echo $row['brand_id']?>'>
+									<?php echo $row["brand_name"]?>
+								</a>
+							</li>
 								<?php 
 							}
 						}
@@ -109,17 +121,18 @@
 					</div>
 				</div>
 				<div class="overlay-content">
-					<a href="3c.php"><u>3Cs</u></a>
+					<a href="3c.php"><u>3C</u></a>
 					<div class="newspaper">
 						<?php
 						while($row1 = $rs_result1->fetch_assoc()) {
 							if ($row1['brand_category']==2) {
+								
 								?> 
-								<form action="products.php?<?php echo $row1["brand_name"]?>" method="post">
-									<input type="hidden" name="brand_id" value="<?php echo $row1["brand_id"]?>">
-									<input type="hidden" name="brand_name" value="<?php echo $row1["brand_name"]?>">
-									<button type="submit"><?php echo $row1["brand_name"]?></button>
-								</form>
+								<li>
+								<a href='products.php?<?php echo $row1['brand_id']?>'>
+									<?php echo $row1["brand_name"]?>
+								</a>
+							</li>
 								<?php 
 							}
 						}
@@ -131,13 +144,12 @@
 		</div>
 <!--SEARCH-->
 <div class="w3l_search">
-	<form action="#" method="post">
-		<input type="search" name="Search" placeholder="Search for a Product..." required="">
-		<button type="submit" class="btn btn-default search" aria-label="Left Align">
-			<i class="fa fa-search" aria-hidden="true"> </i>
+	<form action="search.php" method="post"> 
+		<input type="text" name="search" placeholder="找商品">
+		<button type="submit" class="btn btn-default search">
+		<i class="fa fa-search" aria-hidden="true"> </i>
 		</button>
-			
-	</form>
+	</form> 
 </div>
 				</div>
 <!--SEARCH-->

@@ -1,147 +1,95 @@
-<link href="modal.css" rel="stylesheet"> 
-<script src="modal.js"></script>
+<br><script>
+window.onload = function () {
 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "網路聲量"
+	},
+	axisX:{
+		valueFormatString: "<?php echo $row["datemonth"];?>",
+		crosshair: {
+			enabled: true,
+			snapToDataPoint: true
+		}
+	},
+	axisY: {
+		title: "聲量統計",
+		crosshair: {
+			enabled: true
+		}
+	},
+	toolTip:{
+		shared:true
+	},  
+	legend:{
+		cursor:"pointer",
+		verticalAlign: "bottom",
+		horizontalAlign: "left",
+		dockInsidePlotArea: true,
+		itemclick: toogleDataSeries
+	},
+	data: [/*{
+		type: "line",A
+		showInLegend: true,
+		name: "聲量",
+		markerType: "square",
+		xValueFormatString: "MMM, YYYY",
+		color: "#011936",
+		// junbhb
+		
+		dataPoints: [
+			{ x: new Date(2016, 10), y: 943 },
+			{ x: new Date(2016, 11), y: 970 },
+			{ x: new Date(2016, 12), y: 869 },
+			{ x: new Date(2017, 1), y: 650 },
+			{ x: new Date(2017, 2), y: 700 },
+			{ x: new Date(2017, 3), y: 710 },
+			{ x: new Date(2017, 4), y: 658 },
+			{ x: new Date(2017, 5), y: 734 },
+			{ x: new Date(2017, 6), y: 963 },
+			{ x: new Date(2017, 7), y: 847 },
+			{ x: new Date(2017, 8), y: 853 },
+			{ x: new Date(2017, 9), y: 869 },
+			
 
-    <div class="modal-body">
-        <!-- Main content -->
-        <section class="content">
-                <div class="box-body">
-                  <div class="chart">
-                    <canvas id="areaChart" height="250"></canvas>
-                  </div>
-                </div>
-        </section>
-        <script>
-      $(function () {
+		]
+	},*/
+	{
+		type: "line",
+		showInLegend: true,
+		name: "Unique Visit",
+		lineDashType: "dash",
+		color: "#9DD1F1",
+		dataPoints: [
+		<?php
+		$sql = " SELECT * FROM chart where product_id=".$product_id;
+		$rs_result = $conn->query($sql); 
+		while($row = $rs_result->fetch_assoc()) {
+		?>	
+			{ x: <?php echo $row["datemonth"];?>, y: <?php echo $row["product_number"];?> },
+		<?php };?>	
+		]
+	}]
+});
+chart.render();
 
-        var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
-        var areaChart = new Chart(areaChartCanvas);
+function toogleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	} else{
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
 
-        var areaChartData = {
-          labels: ["Oct.", "Nov.", "Dec.", "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.","Aug.", "Sep."],
-          datasets: [
-            {
-              label: "Electronics",
-              fillColor: "rgba(210, 214, 222, 1)",
-              strokeColor: "rgba(210, 214, 222, 1)",
-              pointColor: "rgba(210, 214, 222, 1)",
-              pointStrokeColor: "#c1c7d1",
-              pointHighlightFill: "#fff",
-              pointHighlightStroke: "rgba(220,220,220,1)",
-              data: [65, 59, 80, 81, 56, 55, 40,77,21,46,64,90]
-            },
-            
-          ]
-        };
-
-        var areaChartOptions = {
-          showScale: true,
-          scaleShowGridLines: false,
-          scaleGridLineColor: "rgba(0,0,0,.05)",
-          scaleGridLineWidth: 1,
-          scaleShowHorizontalLines: true,
-          scaleShowVerticalLines: true,
-          bezierCurve: true,
-          bezierCurveTension: 0.3,
-          pointDot: false,
-          pointDotRadius: 4,
-          pointDotStrokeWidth: 1,
-          pointHitDetectionRadius: 20,
-          datasetStroke: true,
-          datasetStrokeWidth: 2,
-          datasetFill: true,
-          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-          maintainAspectRatio: false,
-
-          responsive: true
-        };
-
-
-        areaChart.Line(areaChartData, areaChartOptions);
-
-
-
-        var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
-        var pieChart = new Chart(pieChartCanvas);
-        var PieData = [
-          {
-            
-            value: 700,
-            color: "#f56954",
-            highlight: "#f56954",
-            label: "Chrome"
-          },
-          {
-            value: 500,
-            color: "#00a65a",
-            highlight: "#00a65a",
-            label: "IE"
-          },
-          {
-            value: 400,
-            color: "#f39c12",
-            highlight: "#f39c12",
-            label: "FireFox"
-          },
-          {
-            value: 600,
-            color: "#00c0ef",
-            highlight: "#00c0ef",
-            label: "Safari"
-          },
-          {
-            value: 300,
-            color: "#3c8dbc",
-            highlight: "#3c8dbc",
-            label: "Opera"
-          },
-          {
-            value: 100,
-            color: "#d2d6de",
-            highlight: "#d2d6de",
-            label: "Navigator"
-          }
-        ];
-        var pieOptions = {
-          segmentShowStroke: true,
-          segmentStrokeColor: "#fff",
-          segmentStrokeWidth: 2,
-          percentageInnerCutout: 50,
-          animationSteps: 100,
-          animationEasing: "easeOutBounce",
-          animateRotate: true,
-          animateScale: false,
-          responsive: true,
-          maintainAspectRatio: false,
-          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<segments.length; i++){%><li><span style=\"background-color:<%=segments[i].fillColor%>\"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>"
-        };
-
-        pieChart.Doughnut(PieData, pieOptions);
-        //bar
-        var barChartCanvas = $("#barChart").get(0).getContext("2d");
-        var barChart = new Chart(barChartCanvas);
-        var barChartData = areaChartData;
-        barChartData.datasets[1].fillColor = "#00a65a";
-        barChartData.datasets[1].strokeColor = "#00a65a";
-        barChartData.datasets[1].pointColor = "#00a65a";
-        var barChartOptions = {
-          scaleBeginAtZero: true,
-          scaleShowGridLines: true,
-          scaleGridLineColor: "rgba(0,0,0,.05)",
-          scaleGridLineWidth: 1,
-          scaleShowHorizontalLines: true,
-          scaleShowVerticalLines: true,
-          barShowStroke: true,
-          barStrokeWidth: 2,
-          barValueSpacing: 5,
-          barDatasetSpacing: 1,
-          legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].fillColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>",
-
-          responsive: true,
-          maintainAspectRatio: false
-        };
-
-        barChartOptions.datasetFill = false;
-        barChart.Bar(barChartData, barChartOptions);
-      });
-    </script>
+}
+</script>
+<div id="chartContainer" style="height: 450px; width: 300%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</div>
+</div>
+<hr/>
+</div>
+</div>

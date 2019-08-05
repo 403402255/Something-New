@@ -1,12 +1,13 @@
 <?php
 include("config.php");
-$pid=$_REQUEST['product_id'];
+$pid=$_POST['product_id'];
 $datatable="comment";
-if(isset($_POST['submit']))
+if(isset($_POST['submit2']))
 {
-$sql="insert into ".$datatable."(member_id,c_title,c_content) ";
-$sql.="values('".$_POST["member_name"]."','".$_POST["c_title"]."','".$_POST["c_content"]."')";
+$sql="insert into ".$datatable."(member_name,c_title,c_content,product_id) ";
+$sql.="values('".$_POST["member_name"]."','".$_POST["c_title"]."','".$_POST["c_content"]."','".$_POST['product_id']."')";
 $result = mysqli_query($conn,$sql)or die("Query failed : " . mysqli_error($conn));
-echo '<meta http-equiv=REFRESH CONTENT=1;url=single.php>';
+echo "<meta http-equiv=REFRESH CONTENT=1;url=single.php?&pid=".$pid.">";
 };
 ?>
+

@@ -10,7 +10,7 @@ if($_SESSION['username'] != null)
         echo '<a href="update.php">修改</a>    ';
         echo '<a href="delete.php">刪除</a>  <br><br>';
     
-        $sql = "SELECT * FROM member_table";
+        $sql = "SELECT * FROM membership";
         $result = mysql_query($sql);
         while($row = mysql_fetch_row($result))
         {
@@ -24,3 +24,4 @@ else
         echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
 }
 ?>
+

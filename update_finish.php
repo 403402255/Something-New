@@ -1,32 +1,32 @@
-<?php session_start();
+
+<?php
+session_start(); 
 include("config.php");
 
-$id = $_POST['id'];
-$pw = $_POST['pw'];
-$pw2 = $_POST['pw2'];
-$phone = $_POST['phone'];
+$account = $_POST['account'];
+$password = $_POST['password'];
 $email = $_POST['email'];
 $name = $_POST['name'];
+$phone = $_POST['phone'];
 
-if($_SESSION['username'] != null && $pw != null && $pw2 != null && $pw == $pw2)
+
+if($_SESSION['username'] != null && $password != null )
 {
-        $id = $_SESSION['username'];
-    
-        $sql = "update membership set member_psw=$pw, member_phone=$phone, member_address=$address, member_name=$name member_acc='$id'";
-        if(mysql_query($sql))
-        {
-                echo '修改成功!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=eduser.php>';
-        }
-        else
-        {
-                echo '修改失敗!';
-                echo '<meta http-equiv=REFRESH CONTENT=2;url=eduser.php>';
-        }
+        $account = $_SESSION['username'];
+
+        //更新資料庫資料語法
+        $sql = "UPDATE membership SET member_acc=$account, member_psw=$password, member_name=$name, member_phone=$phone, member_email=$email where member_acc='$account'";
+
+
+$result = mysqli_query($conn,$sql);
+$_SESSION['username'] = $account;
+echo '<meta http-equiv=REFRESH CONTENT=1;url=index.php>';
+        
+
 }
-else
-{
-        echo '您無權限觀看此頁面!';
-        echo '<meta http-equiv=REFRESH CONTENT=2;url=index.php>';
-}
-?>
+
+        ?>
+
+
+
+        

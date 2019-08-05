@@ -59,8 +59,8 @@ include("function.php");
 <div class="breadcrumbs">
 	<div class="container">
 		<ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-			<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
-			<li>Wears</li>
+			<li><a href="index.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>首頁</a></li>
+			<li>服飾類</li>
 		</ol>
 	</div>
 </div>
@@ -70,9 +70,9 @@ include("function.php");
 	<div class="container">
 		<div class="col-md-4 products-left">
 			<div class="categories">
-				<h2>Categories</h2>
+				<h2>類別</h2>
 				<ul class="cate">
-					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>BRANDS</a></li>
+					<li><a href="products.php"><i class="fa fa-arrow-right" aria-hidden="true"></i>品牌列表</a></li>
 					<ul>
 						<?php
 						getwbrands();//之後改依類別顯示
@@ -83,38 +83,37 @@ include("function.php");
 		</div>
 		<!--加filter function-->
 		<div class="col-md-8 products-right">
-			<div class="products-right-grid">
-				<div class="products-right-grids">
-					<div class="sorting">
-						<select id="country" onchange="change_country(this.value)" class="frm-field required sect">
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option> 
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by average rating</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by date</option>
-						</select>
-					</div>
-					<div class="sorting-left">
-						<select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 9</option>
-							<option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>Item on page 18</option>
-						</select>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-			</div>
-
+            <div class="products-right-grid">
+                <div class="products-right-grids">
+                    <div class="sorting">
+                        <select id="country" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>888</option>
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>最高人氣</option> 
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>價格由高至低</option>
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>價格由低至高</option>
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>上架日期</option>
+                        </select>
+                    </div>
+                    <div class="sorting-left">
+                        <select id="country1" onchange="change_country(this.value)" class="frm-field required sect">
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>每頁18項產品數</option>
+                            <option value="null"><i class="fa fa-arrow-right" aria-hidden="true"></i>每頁36項產品數</option>
+                        </select>
+                    </div>
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
 <!--//productsnav->
 <!--products-->
 	<?php
-	$datatable = "product";
+
 	$results_per_page = 18;
 
 	if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; }; 
 	$start_from = ($page-1) * $results_per_page;
-	$sql = " SELECT * FROM product LIMIT $start_from, ".$results_per_page;
+	$sql = " SELECT * FROM products LIMIT $start_from, ".$results_per_page;
+    //echo $sql;
 	$rs_result = $conn->query($sql); 
-	?>
-	<?php 
 		while($row = $rs_result->fetch_assoc()) {
 			
 	?> 
@@ -124,7 +123,7 @@ include("function.php");
     					<div class="agile_top_brand_left_grid">
     						<div class="agile_top_brand_left_grid_pos">
     							<div class="popup" onclick="myFunc()"><div class="glyphicon glyphicon-plus-sign"></div>
-  						<span class="popuptext" id="myPopup"><h4>Added to your save list!</h4></span>
+  						<span class="popuptext" id="myPopup"><h4>加入收藏清單！</h4></span>
 				</div>
 <script>
 	//popups
@@ -138,7 +137,7 @@ function myFunc() {
     							<figure>
     								<div class="snipcart-item block">
     									<div class="snipcart-thumb">
-    										<a href="single.php?&product_id=<?php echo $row["product_id"];?>"><img src=" <?php echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
+    										<a href="single.php?<?php echo $row["product_id"];?>"><img src=" <?php echo $row["p_pic"]; ?>" alt="" class="img-responsive"></a>
     										<font face = "Noto Sans TC"><p><?php echo $row["p_name"]; ?></p></f>
     											<h4><?php 
     											if($row["p_price"]==0){
@@ -159,23 +158,22 @@ function myFunc() {
     													<input type="hidden" name="currency_code" value="NTD">
     													<input type="hidden" name="return" value="">
     													<input type="hidden" name="cancel_return" value="">
-    													<input type="submit" name="SAVE" value="View" class="button">
+    													<input type="submit" name="SAVE" value="看更多" class="button">
     												</fieldset>
-    											</form>
-    										</div>
-    									</div>
-    								</figure>
-    							</div>
-    						</div>
-    					</div>
-    				</div>
-    			</div>
-<?php 
-}; 
-?>
-</div>	
-<!--//products-->
-<!--pagination-->
+                                            </form>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php 
+        }; 
+        ?>  
+        <!--//products-->
+ <!--pagination-->
 <nav class="numbering">
     <ul class="pagination paging">
         <li>
@@ -188,6 +186,10 @@ function myFunc() {
     </ul>
 </nav>
 <!--//pagination-->
+</div>
+<div class="clearfix"> </div>
+</div>
+</div>
 <?php
 include("footer.php");
 ?>
